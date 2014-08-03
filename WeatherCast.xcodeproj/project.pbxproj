@@ -46,6 +46,10 @@
 		6E4544DD198EABB10008224E /* weather-snow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E4544C3198EABB10008224E /* weather-snow@2x.png */; };
 		6E4544DE198EABB10008224E /* weather-tstorm.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E4544C4198EABB10008224E /* weather-tstorm.png */; };
 		6E4544DF198EABB10008224E /* weather-tstorm@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E4544C5198EABB10008224E /* weather-tstorm@2x.png */; };
+		6E4544E2198EC4E10008224E /* WCClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E4544E1198EC4E10008224E /* WCClient.m */; };
+		6E4544E8198EC58A0008224E /* WCManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E4544E7198EC58A0008224E /* WCManager.m */; };
+		6E4544EB198EC5BE0008224E /* WCCondition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E4544EA198EC5BE0008224E /* WCCondition.m */; };
+		6E4544EE198EC5F60008224E /* WCDailyForecast.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E4544ED198EC5F60008224E /* WCDailyForecast.m */; };
 		F1D67AC255314169BD8D0D6F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 14B976F4B0794FCFA3284E5B /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -106,6 +110,14 @@
 		6E4544C3198EABB10008224E /* weather-snow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "weather-snow@2x.png"; sourceTree = "<group>"; };
 		6E4544C4198EABB10008224E /* weather-tstorm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "weather-tstorm.png"; sourceTree = "<group>"; };
 		6E4544C5198EABB10008224E /* weather-tstorm@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "weather-tstorm@2x.png"; sourceTree = "<group>"; };
+		6E4544E0198EC4E10008224E /* WCClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WCClient.h; sourceTree = "<group>"; };
+		6E4544E1198EC4E10008224E /* WCClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WCClient.m; sourceTree = "<group>"; };
+		6E4544E6198EC58A0008224E /* WCManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WCManager.h; sourceTree = "<group>"; };
+		6E4544E7198EC58A0008224E /* WCManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WCManager.m; sourceTree = "<group>"; };
+		6E4544E9198EC5BE0008224E /* WCCondition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WCCondition.h; sourceTree = "<group>"; };
+		6E4544EA198EC5BE0008224E /* WCCondition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WCCondition.m; sourceTree = "<group>"; };
+		6E4544EC198EC5F60008224E /* WCDailyForecast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WCDailyForecast.h; sourceTree = "<group>"; };
+		6E4544ED198EC5F60008224E /* WCDailyForecast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WCDailyForecast.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,7 +152,6 @@
 				6E454497198DF4D80008224E /* WeatherCastTests */,
 				6E454477198DF4D40008224E /* Frameworks */,
 				6E454476198DF4D40008224E /* Products */,
-				6E4544AA198EABB10008224E /* Images */,
 				37DAE91188C34948B81DC70A /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
@@ -169,6 +180,14 @@
 		6E45447E198DF4D40008224E /* WeatherCast */ = {
 			isa = PBXGroup;
 			children = (
+				6E4544EC198EC5F60008224E /* WCDailyForecast.h */,
+				6E4544ED198EC5F60008224E /* WCDailyForecast.m */,
+				6E4544E9198EC5BE0008224E /* WCCondition.h */,
+				6E4544EA198EC5BE0008224E /* WCCondition.m */,
+				6E4544E6198EC58A0008224E /* WCManager.h */,
+				6E4544E7198EC58A0008224E /* WCManager.m */,
+				6E4544E0198EC4E10008224E /* WCClient.h */,
+				6E4544E1198EC4E10008224E /* WCClient.m */,
 				6E4544A7198EA6540008224E /* WCViewController.h */,
 				6E4544A8198EA6540008224E /* WCViewController.m */,
 				6E454487198DF4D60008224E /* WeatherCastAppDelegate.h */,
@@ -182,6 +201,7 @@
 		6E45447F198DF4D50008224E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				6E4544AA198EABB10008224E /* Images */,
 				6E454480198DF4D50008224E /* WeatherCast-Info.plist */,
 				6E454481198DF4D50008224E /* InfoPlist.strings */,
 				6E454484198DF4D50008224E /* main.m */,
@@ -215,7 +235,8 @@
 				6E4544AC198EABB10008224E /* bg@2x.png */,
 				6E4544AD198EABB10008224E /* Weather Icons */,
 			);
-			path = Images;
+			name = Images;
+			path = ../Images;
 			sourceTree = "<group>";
 		};
 		6E4544AD198EABB10008224E /* Weather Icons */ = {
@@ -406,8 +427,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6E4544E8198EC58A0008224E /* WCManager.m in Sources */,
+				6E4544EB198EC5BE0008224E /* WCCondition.m in Sources */,
+				6E4544EE198EC5F60008224E /* WCDailyForecast.m in Sources */,
 				6E4544A9198EA6540008224E /* WCViewController.m in Sources */,
 				6E454489198DF4D60008224E /* WeatherCastAppDelegate.m in Sources */,
+				6E4544E2198EC4E10008224E /* WCClient.m in Sources */,
 				6E454485198DF4D50008224E /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
