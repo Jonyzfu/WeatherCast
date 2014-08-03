@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface WCViewController : UIViewController
+@interface WCViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate>
 
 @end
