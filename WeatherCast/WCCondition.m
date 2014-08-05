@@ -43,7 +43,7 @@
 // Declare the public message to get an image file name.
 - (NSString *)imageName
 {
-    return [WCCondition imageMap][self.icon];
+    return [WCCondition imageMap][self.icon[0]];
 }
 
 // Setup your “JSON to model properties” mappings

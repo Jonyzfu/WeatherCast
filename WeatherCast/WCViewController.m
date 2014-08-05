@@ -171,32 +171,32 @@
       // Delivers any changes on the main thread since you’re updating the UI.
       deliverOn:RACScheduler.mainThreadScheduler]
      subscribeNext:^(WCCondition *newCondition) {
-         
-         // Updates the text labels with weather data; using newCondition for the text and not the singleton.
-         temperatureLabel.text = [NSString stringWithFormat:@"%.0fº", [[newCondition temperature] floatValue]];
-         conditionLabel.text = [newCondition.condition capitalizedString];
-         cityLabel.text = [newCondition.locationName capitalizedString];
-         
-         // Uses the mapped image file name to create an image and sets it as the icon for the view.
-         iconView.image = [UIImage imageNamed:[newCondition imageName]];
+         if (newCondition) { // Check newCondition to avoid the error.
+             // Updates the text labels with weather data; using newCondition for the text and not the singleton.
+             temperatureLabel.text = [NSString stringWithFormat:@"%.0fº", [[newCondition temperature] floatValue]];
+             conditionLabel.text = [newCondition.condition[0] capitalizedString];
+             cityLabel.text = [newCondition.locationName capitalizedString];
+             
+             // Uses the mapped image file name to create an image and sets it as the icon for the view.
+             iconView.image = [UIImage imageNamed:[newCondition imageName]];
+         }
      }];
     
     [[RACObserve([WCManager sharedManager], hourlyForecast)
       deliverOn:RACScheduler.mainThreadScheduler]
      subscribeNext:^(NSArray *newForecast) {
-         [self.tableView reloadData];
+        [self.tableView reloadData];
      }];
     
     [[RACObserve([WCManager sharedManager], dailyForecast)
       deliverOn:RACScheduler.mainThreadScheduler]
      subscribeNext:^(NSArray *newForecast) {
-         [self.tableView reloadData];
+        [self.tableView reloadData];
      }];
-    
     
     [[WCManager sharedManager] findCurrentLocation];
     
-    
+
 }
 
 - (void)didReceiveMemoryWarning

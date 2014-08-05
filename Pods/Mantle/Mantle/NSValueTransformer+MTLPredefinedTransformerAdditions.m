@@ -117,15 +117,11 @@ NSString * const MTLBooleanValueTransformerName = @"MTLBooleanValueTransformerNa
 }
 
 + (NSValueTransformer *)mtl_valueMappingTransformerWithDictionary:(NSDictionary *)dictionary {
-	return [self mtl_valueMappingTransformerWithDictionary:dictionary defaultValue:nil reverseDefaultValue:nil];
-}
-
-+ (NSValueTransformer *)mtl_valueMappingTransformerWithDictionary:(NSDictionary *)dictionary defaultValue:(id)defaultValue reverseDefaultValue:(id)reverseDefaultValue {
 	NSParameterAssert(dictionary != nil);
 	NSParameterAssert(dictionary.count == [[NSSet setWithArray:dictionary.allValues] count]);
 
 	return [MTLValueTransformer reversibleTransformerWithForwardBlock:^(id<NSCopying> key) {
-		return dictionary[key ?: NSNull.null] ?: defaultValue;
+		return dictionary[key];
 	} reverseBlock:^(id object) {
 		__block id result = nil;
 		[dictionary enumerateKeysAndObjectsUsingBlock:^(id key, id anObject, BOOL *stop) {
@@ -134,7 +130,7 @@ NSString * const MTLBooleanValueTransformerName = @"MTLBooleanValueTransformerNa
 				*stop = YES;
 			}
 		}];
-		return result ?: reverseDefaultValue;
+		return result;
 	}];
 }
 

@@ -21,11 +21,11 @@
 @property (nonatomic, strong) NSString *locationName;
 @property (nonatomic, strong) NSDate *sunrise;
 @property (nonatomic, strong) NSDate *sunset;
-@property (nonatomic, strong) NSString *conditionDescription;
-@property (nonatomic, strong) NSString *condition;
+@property (nonatomic, strong) NSArray *conditionDescription;
+@property (nonatomic, strong) NSArray *condition;
 @property (nonatomic, strong) NSNumber *windBearing;
 @property (nonatomic, strong) NSNumber *windSpeed;
-@property (nonatomic, strong) NSString *icon;
+@property (nonatomic, strong) NSArray *icon;
 
 // This is simply a helper method to map weather conditions to image files.
 - (NSString *)imageName;

@@ -57,7 +57,9 @@
         
         // Creates and returns an RACDisposable object which handles any cleanup when the signal when it is destroyed.
         return [RACDisposable disposableWithBlock:^{
-            [dataTask cancel];
+            if(dataTask.state == NSURLSessionTaskStateRunning || dataTask.state == NSURLSessionTaskStateSuspended) {
+                [dataTask cancel];
+            }
         }];
     }] doError:^(NSError *error) {
         // Adds a “side effect” to log any errors that occur.
