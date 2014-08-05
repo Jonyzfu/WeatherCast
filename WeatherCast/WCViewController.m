@@ -8,6 +8,7 @@
 
 #import "WCViewController.h"
 #import <LBBlurredImage/UIImageView+LBBlurredImage.h>
+#import "WCManager.h"
 
 @interface WCViewController ()
 
@@ -134,6 +135,38 @@
     [header addSubview:iconView];
     
     
+    // The returned value from the signal is assigned to the text key of the hiloLabel object.
+    RAC(hiloLabel, text) = [[RACSignal combineLatest: @[
+                            // Observe the high and low temperatures of the currentCondition key.
+                            // Combine the signals and use the latest values for both.
+                            RACObserve([WCManager sharedManager], currentCondition.tempHigh),
+                            RACObserve([WCManager sharedManager], currentCondition.tempLow)]
+                            
+                            // Reduce the values from your combined signals into a single value.
+                            reduce:^(NSNumber *hi, NSNumber *low) {
+                                return [NSString stringWithFormat:@"%.0f° / %.0f°",hi.floatValue,low.floatValue];
+                            }]
+                            // Deliver everything on the main thread.
+                            deliverOn:RACScheduler.mainThreadScheduler];
+    
+    
+    // Observes the currentCondition key on the WCManager singleton.
+    [[RACObserve([WCManager sharedManager], currentCondition)
+      // Delivers any changes on the main thread since you’re updating the UI.
+      deliverOn:RACScheduler.mainThreadScheduler]
+     subscribeNext:^(WCCondition *newCondition) {
+         
+         // Updates the text labels with weather data; using newCondition for the text and not the singleton.
+         temperatureLabel.text = [NSString stringWithFormat:@"%.0fº", [[newCondition temperature] floatValue]];
+         conditionLabel.text = [newCondition.condition capitalizedString];
+         cityLabel.text = [newCondition.locationName capitalizedString];
+         
+         // Uses the mapped image file name to create an image and sets it as the icon for the view.
+         iconView.image = [UIImage imageNamed:[newCondition imageName]];
+     }];
+    
+    
+    [[WCManager sharedManager] findCurrentLocation];
     
     
 }
